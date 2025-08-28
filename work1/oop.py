@@ -25,8 +25,6 @@ class Person:
     #         return ()
 
 
-
-
 class Animal:
 
     def speak(self):
@@ -64,6 +62,33 @@ def move(vehicle):
     vehicle.move()
 
 
+from abc import abstractmethod
+from abc import ABC
+
+class Shape(ABC):
+
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, length):
+        self.width = width
+        self.length = length
+
+    def area(self):
+        return self.width * self.length
+
+class Circle(Shape):
+    def __init__(self, rad):
+        self.rad = rad
+
+    def area(self):
+        pi = 3.14
+        return pi * self.rad ** 2
+
+
+
 # ----
 p = Person()
 p.set_age(25)
@@ -85,3 +110,11 @@ bike = Bicycle()
 
 print(move(car))  # Вывод: Car is driving
 print(move(bike))  # Вывод: Bicycle is pedaling
+# ----
+print(" ---- ")
+
+rect = Rectangle(10, 5)
+circle = Circle(7)
+
+print(rect.area())  # Вывод: 50
+print(circle.area())  # Вывод: ~153.94
